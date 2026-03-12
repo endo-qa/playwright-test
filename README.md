@@ -74,9 +74,9 @@ use: {
 
 #### [設定変更]
 - `google.spec.ts`を一括実行・CI対象から除外した
-  - `playwright.config.ts`に`testIgnore`を追加し、ローカルの一括実行時に除外
-  - `playwright.yml`に`--ignore-glob`を追加し、CI実行時に除外
-  - CI実行時のブラウザをChromiumのみに変更した
+  - `playwright.config.ts`に`testIgnore`を追加することで、ローカル・CI両方で除外できた
+  - `--ignore-glob`オプションは使用しているPlaywrightのバージョンで未対応のためNG
+- CI実行時のブラウザをChromiumのみに変更した
   - `playwright.yml`に`--project=chromium`を追加
 
 #### [Codegen・TODOアプリテスト]

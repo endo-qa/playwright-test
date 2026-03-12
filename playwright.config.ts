@@ -13,6 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  testIgnore: ['**/google.spec.ts'],   // 該当ファイルを実行しないようにする
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,8 +30,6 @@ use: {
     screenshot: 'on',          // 常にスクリーンショットを撮る（または 'only-on-failure'）
     video: 'retain-on-failure', // 失敗した時だけ動画を残す
   },
-
-testIgnore: ['**/google.spec.ts'],   // 該当ファイルを実行しないようにする
 
   /* Configure projects for major browsers */
   projects: [
