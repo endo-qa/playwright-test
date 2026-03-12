@@ -30,6 +30,8 @@ use: {
     video: 'retain-on-failure', // 失敗した時だけ動画を残す
   },
 
+testIgnore: ['**/google.spec.ts'],   // 該当ファイルを実行しないようにする
+
   /* Configure projects for major browsers */
   projects: [
     {

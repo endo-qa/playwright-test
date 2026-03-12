@@ -72,6 +72,13 @@ use: {
 - issue #2：Playwright Codegenを利用して、ブラウザ操作からコードを自動生成してみる（クローズ）
 - issue #3：TODOアプリの基本操作テストを実装する（クローズ）
 
+#### [設定変更]
+- `google.spec.ts`を一括実行・CI対象から除外した
+  - `playwright.config.ts`に`testIgnore`を追加し、ローカルの一括実行時に除外
+  - `playwright.yml`に`--ignore-glob`を追加し、CI実行時に除外
+  - CI実行時のブラウザをChromiumのみに変更した
+  - `playwright.yml`に`--project=chromium`を追加
+
 #### [Codegen・TODOアプリテスト]
 Codegenを使い、https://demo.playwright.dev/todomvc/#/ を対象にTODOアプリの基本操作テストを実装
 
