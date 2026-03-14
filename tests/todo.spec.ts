@@ -4,12 +4,13 @@ import { clearAllTodos } from './helpers/todo-cleanup';
 
 // 各テストの前にTODOリストを全件削除し、クリーンな状態から始める
 test.beforeEach(async ({ page }) => {
+    // TODOアプリにアクセスする
+  await page.goto('https://demo.playwright.dev/todomvc/#/');
   await clearAllTodos(page);
 });
 
 test('TODOアプリの基本操作', async ({ page }) => {
-    // TODOアプリにアクセスする ※clearAllTodos内でgotoしているため不要
-  //await page.goto('https://demo.playwright.dev/todomvc/#/');
+
 
     // TODO「買い物リストを作成」を追加し、表示されることを確認する
   await addTodo(page, '買い物リストを作成');
