@@ -26,6 +26,7 @@ export default defineConfig({
 reporter: [['html', { open: 'never' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 use: {
+    baseURL: 'https://demo.playwright.dev',   // テスト対象のベースURLを一元管理する
     trace: 'on-first-retry',   // 失敗して再試行した時にログを録る
     screenshot: 'on',          // 常にスクリーンショットを撮る（または 'only-on-failure'）
     video: 'retain-on-failure', // 失敗した時だけ動画を残す

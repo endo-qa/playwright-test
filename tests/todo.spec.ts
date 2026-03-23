@@ -4,8 +4,8 @@ import { clearAllTodos } from './helpers/todo-cleanup';
 
 // ファイル全体：全テストで共通の前処理
 test.beforeEach(async ({ page }) => {
-  // TODOアプリにアクセスする
-  await page.goto('https://demo.playwright.dev/todomvc/#/');
+  // baseURLを基準にルートページに遷移する（playwright.config.tsのbaseURLを参照）
+  await page.goto('/todomvc/#/');
   // 各テストの前にTODOリストを全件削除し、クリーンな状態から始める
   await clearAllTodos(page);
 });

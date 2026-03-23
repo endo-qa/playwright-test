@@ -287,3 +287,28 @@ Codegenを使い、https://demo.playwright.dev/todomvc/#/ を対象にTODOアプ
 - 第11章　Playwrightの内部構造
   - Playwrightと他のE2EテストツールのアーキテクチャをPlaywrightを確認した
   - テストツールのアーキテクチャを意識する場面は少ないが、理解することで役立つ場面もある
+
+### 2026/03/23　TODOの編集・削除テストの実装・gotoのURLを相対参照に変更
+#### [issue #9：TODOリストの編集・削除テストを実装する]
+- `test.describe`でテストをグループ化した
+  - グループごとに`beforeEach`で前提条件を設定できることを確認した
+  - ファイル全体の`beforeEach`とグループ内の`beforeEach`を組み合わせることで重複を減らした
+- TODOの編集テストを実装した
+  - ダブルクリックで編集モードに入り、テキストを変更してEnterで確定する
+- TODOの削除テストを実装した
+  - ホバーして削除ボタンをクリックし、`toHaveCount(0)`で削除されたことを確認する
+
+#### [気づき]
+- テストは独立している方が原因の特定がしやすい
+- `test.describe`内に`beforeEach`を書くことで、グループごとに異なる前提条件を設定できる
+- `toHaveCount()`で要素の件数を確認できる
+
+#### [issue #10：gotoのURLを相対参照に変更する]
+- `playwright.config.ts`に`baseURL`を設定し、URLを一元管理できるようにした
+- `goto`のURLを絶対URLから相対参照に変更した
+
+#### [気づき]
+- `baseURL`に`#/`を含めると404エラーになる
+  - `#`はURLのフラグメントを表す記号のため、ベースURLとしては適切ではない
+  - `baseURL`はスキーム・ホスト・パスまでを設定し、フラグメント（`#`以降）は`goto`側に書くのが正しい
+- `baseURL`を設定することで、テスト対象のURLが変わっても`playwright.config.ts`だけ修正すれば済む
